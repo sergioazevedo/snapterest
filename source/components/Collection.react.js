@@ -31,10 +31,12 @@ var Collection = React.createClass({
   }
 
   render: function () {
+    var result;
     if (isTweetCollectionEmpty()) {
       result = <Header text='Your collection is empty =(' />;
+    } else {
+      result = render_tweet_collection_component();
     }
-    result = render_tweet_collection_component();
 
     return result;
   },
