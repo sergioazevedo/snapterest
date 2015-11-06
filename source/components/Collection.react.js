@@ -28,12 +28,12 @@ var Collection = React.createClass({
 
   isTweetCollectionEmpty: function(){
     this.getNumberOfTweetsInCollection() == 0;
-  }
+  },
 
   render: function () {
     var result;
     if (isTweetCollectionEmpty()) {
-      result = <Header text='Your collection is empty =(' />;
+      result = <Header text='Your collection is empty =('/>;
     } else {
       result = render_tweet_collection_component();
     }

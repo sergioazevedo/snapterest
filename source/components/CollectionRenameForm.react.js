@@ -10,7 +10,7 @@ var inputStyle = {
 var CollectionRenameForm = react.createClass({
   getInitialState: function () {
     return {
-      inputValue: this.props.name;
+      inputValue: this.props.name
     };
   },
 
@@ -46,7 +46,7 @@ var CollectionRenameForm = react.createClass({
     return(
       <form className="form-inline" onSubmit={this.handleSubmit}>
         <Header text="Collection name:" />
-        <div className=:"form-group">
+        <div className="form-group">
           <input
             className="form-control"
             style={inputStyle}
