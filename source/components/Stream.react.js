@@ -38,4 +38,4 @@ var Stream = React.createClass({
   }
 });
 
-moudle.exports = Stream;
+module.exports = Stream;

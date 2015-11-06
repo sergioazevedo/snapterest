@@ -7,7 +7,7 @@ var inputStyle = {
   marginRight: '5px'
 };
 
-var CollectionRenameForm = react.createClass({
+var CollectionRenameForm = React.createClass({
   getInitialState: function () {
     return {
       inputValue: this.props.name

@@ -28,7 +28,7 @@ var Tweet = React.createClass({
       }
     },
 
-    onImageClick: React.propTypes.func
+    onImageClick: React.PropTypes.func
   },
 
   handleImageClick: function () {

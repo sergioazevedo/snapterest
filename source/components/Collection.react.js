@@ -23,19 +23,19 @@ var Collection = React.createClass({
   },
 
   getNumberOfTweetsInCollection: function () {
-    return this.getListOfTweetIds().length;
+    return this.getListOfTweetsIds().length;
   },
 
   isTweetCollectionEmpty: function(){
-    this.getNumberOfTweetsInCollection() == 0;
+    return this.getNumberOfTweetsInCollection() == 0;
   },
 
   render: function () {
     var result;
-    if (isTweetCollectionEmpty()) {
+    if (this.isTweetCollectionEmpty()) {
       result = <Header text='Your collection is empty =('/>;
     } else {
-      result = render_tweet_collection_component();
+      result = this.render_tweet_collection_component();
     }
 
     return result;
