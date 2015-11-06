@@ -1,3 +1,4 @@
+
 var React = require('react');
 var Header = require('./Header.react');
 var Button = require('./Button.react');
@@ -23,7 +24,7 @@ var CollectionControls = React.createClass({
       text = text + ' tweets in your';
     }
 
-    return(
+    return (
       <span>
         {text} <strong>{this.state.name}</strong> collection
       </span>
@@ -45,30 +46,30 @@ var CollectionControls = React.createClass({
 
   render: function () {
     if (this.state.isEditingName) {
-      return(
+      return (
         <CollectionRenameForm
           name={this.state.name}
           onChangeCollectionName={this.setCollectionName}
           onCancelCollectionNameChange={this.toggleEditCollectionName} />
       );
     }
-    return(
+
+    return (
       <div>
         <Header text={this.getHeaderText()} />
-
+        
         <Button
           label="Rename collection"
           handleClick={this.toggleEditCollectionName} />
-
-          <Button
-            label="Empty collection"
-            handleClick={this.props.onRemoveAllTweetsFromCollection} />
-
-          <CollectionExportForm htmlMarkup={this.props.htmlMarkup} />
+        
+        <Button
+          label="Empty collection"
+          handleClick={this.props.onRemoveAllTweetsFromCollection} />
+        
+        <CollectionExportForm htmlMarkup={this.props.htmlMarkup} />
       </div>
     );
   }
-
 });
 
-module.export = CollectionControls;
+module.exports = CollectionControls;

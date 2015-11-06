@@ -3,42 +3,45 @@ var Stream = require('./Stream.react');
 var Collection = require('./Collection.react');
 
 var Application = React.createClass({
-  getInitialState: function(){
+  
+  getInitialState: function () {
     return {
       collectionTweets: {}
     };
   },
 
-  addTweetToCollection: function(tweet){
+  addTweetToCollection: function (tweet) {
     var collectionTweets = this.state.collectionTweets;
+    
     collectionTweets[tweet.id] = tweet;
-
+    
     this.setState({
       collectionTweets: collectionTweets
-    });
+    }); 
   },
 
-  removeTweetFromCollection: function(tweet){
+  removeTweetFromCollection: function (tweet) {
     var collectionTweets = this.state.collectionTweets;
+    
     delete collectionTweets[tweet.id];
-
+    
     this.setState({
       collectionTweets: collectionTweets
-    });
+    }); 
   },
 
-  removeAllTweetsFromCollection: function(){
+  removeAllTweetsFromCollection: function () {
     this.setState({
       collectionTweets: {}
     });
   },
 
-  render: function(){
-    return(
+  render: function () {
+    return (
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-4 text-center">
-            <Stream onAddTweetToCollection={this.addTweetToCollection} />
+            <Stream onAddTweetToCollection={this.addTweetToCollection}/>
           </div>
           <div className="col-md-8">
             <Collection
@@ -48,7 +51,7 @@ var Application = React.createClass({
           </div>
         </div>
       </div>
-    )
+    );
   }
 });
 

@@ -8,7 +8,7 @@ var listStyle = {
 var listItemStyle = {
   display: 'inline-block',
   listStyle: 'none'
-}
+};
 
 var TweetList = React.createClass({
   getListOfTweetIds: function () {
@@ -42,4 +42,4 @@ var TweetList = React.createClass({
   }
 });
 
-module.export = TweetList;
+module.exports = TweetList;

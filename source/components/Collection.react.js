@@ -1,8 +1,8 @@
-var React              = require('react');
-var ReactDOMServer     = require('react-dom/server');
+var React = require('react');
+var ReactDOMServer = require('react-dom/server');
 var CollectionControls = require('./CollectionControls.react');
-var TweetList          = require('./TweetList.react');
-var Header             = require('./Header.react');
+var TweetList = require('./TweetList.react');
+var Header = require('./Header.react');
 
 var Collection = React.createClass({
 
@@ -18,37 +18,39 @@ var Collection = React.createClass({
     return JSON.stringify(htmlMarkup);
   },
 
-  getListOfTweetsIds: function () {
+  getListOfTweetIds: function () {
     return Object.keys(this.props.tweets);
   },
 
   getNumberOfTweetsInCollection: function () {
-    return this.getListOfTweetsIds().length;
-  },
-
-  isTweetCollectionEmpty: function(){
-    return this.getNumberOfTweetsInCollection() == 0;
+    return this.getListOfTweetIds().length;
   },
 
   render: function () {
-    if (this.isTweetCollectionEmpty()) {
-      return <Header text='Your collection is empty =('/>;
-    } else {
-      var numberOfTweetsInCollection = this.getNumberOfTweetsInCollection();
+    var numberOfTweetsInCollection = this.getNumberOfTweetsInCollection();
+
+    if (numberOfTweetsInCollection > 0) {
       var tweets = this.props.tweets;
-      var htmlMarkup = null; //this.createHtmlMarkupStringOfTweetList();
+      var htmlMarkup = this.createHtmlMarkupStringOfTweetList();
       var removeAllTweetsFromCollection = this.props.onRemoveAllTweetsFromCollection;
       var handleRemoveTweetFromCollection = this.props.onRemoveTweetFromCollection;
-      return(
+      
+      return (
         <div>
+          <CollectionControls
+            numberOfTweetsInCollection={numberOfTweetsInCollection}
+            htmlMarkup={htmlMarkup}
+            onRemoveAllTweetsFromCollection={removeAllTweetsFromCollection} />
+
           <TweetList
             tweets={tweets}
             onRemoveTweetFromCollection={handleRemoveTweetFromCollection} />
         </div>
       );
     }
-  },
 
+    return <Header text="Your collection is empty" />;
+  }
 });
 
 module.exports = Collection;

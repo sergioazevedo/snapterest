@@ -1,5 +1,4 @@
 var React = require('react');
-var ReactDOM = require('react-dom');
 var Header = require('./Header.react');
 var Button = require('./Button.react');
 
@@ -8,7 +7,7 @@ var inputStyle = {
 };
 
 var CollectionRenameForm = React.createClass({
-  getInitialState: function () {
+  getInitialState: function() {
     return {
       inputValue: this.props.name
     };
@@ -33,7 +32,7 @@ var CollectionRenameForm = React.createClass({
 
   handleFormCancel: function (event) {
     event.preventDefault();
-    var collectionName = this.props.inputValue;
+    var collectionName = this.props.name;
     this.setInputValue(collectionName);
     this.props.onCancelCollectionNameChange();
   },
@@ -43,23 +42,24 @@ var CollectionRenameForm = React.createClass({
   },
 
   render: function () {
-    return(
+    return (
       <form className="form-inline" onSubmit={this.handleSubmit}>
         <Header text="Collection name:" />
+        
         <div className="form-group">
           <input
             className="form-control"
             style={inputStyle}
             onChange={this.handleInputValueChange}
-            value={this.state.inputStyle}
+            value={this.state.inputValue}
             ref="collectionName" />
         </div>
+
         <Button label="Change" handleClick={this.handleFormSubmit} />
         <Button label="Cancel" handleClick={this.handleFormCancel} />
       </form>
-    );
+    ); 
   }
-
 });
 
 module.exports = CollectionRenameForm;
