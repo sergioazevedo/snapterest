@@ -31,34 +31,24 @@ var Collection = React.createClass({
   },
 
   render: function () {
-    var result;
     if (this.isTweetCollectionEmpty()) {
-      result = <Header text='Your collection is empty =('/>;
+      return <Header text='Your collection is empty =('/>;
     } else {
-      result = this.render_tweet_collection_component();
+      var numberOfTweetsInCollection = this.getNumberOfTweetsInCollection();
+      var tweets = this.props.tweets;
+      var htmlMarkup = null; //this.createHtmlMarkupStringOfTweetList();
+      var removeAllTweetsFromCollection = this.props.onRemoveAllTweetsFromCollection;
+      var handleRemoveTweetFromCollection = this.props.onRemoveTweetFromCollection;
+      return(
+        <div>
+          <TweetList
+            tweets={tweets}
+            onRemoveTweetFromCollection={handleRemoveTweetFromCollection} />
+        </div>
+      );
     }
-
-    return result;
   },
 
-  render_tweet_collection_component : function(){
-    var numberOfTweetsInCollection = this.getNumberOfTweetsInCollection();
-    var tweets = this.props.tweets;
-    var htmlMarkup = this.createHtmlMarkupStringOfTweetList();
-    var removeAllTweetsFromCollection = this.props.onRemoveAllTweetsFromCollection;
-    var handleRemoveTweetFromCollection = this.props.onRemoveTweetFromCollection;
-    return(
-      <div>
-        <CollectionControls
-          numberOfTweetsInCollection={numberOfTweetsInCollection}
-          htmlMarkup={htmlMarkup}
-          onRemoveAllTweetsFromCollection={removeAllTweetsFromCollection} />
-        <TweetList
-          tweets={tweets}
-          onRemoveTweetFromCollection={handleRemoveTweetFromCollection} />
-      </div>
-    );
-  }
 });
 
 module.exports = Collection;
